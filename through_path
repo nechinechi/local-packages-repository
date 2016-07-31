@@ -1,0 +1,5 @@
+LP_PATH='$HOME/local-packages-repository'
+# echo "[ -d $LP_PATH ] && source $LP_PATH/bin"
+line="[ -d $LP_PATH ] && export PATH=\"$LP_PATH/bin:"'$PATH"'
+echo ${line} >> $HOME/.zshenv
+

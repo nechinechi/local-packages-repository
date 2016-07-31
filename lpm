@@ -127,7 +127,7 @@ our $shellname_to_interactiveinitfile = {
     bash => ".bashrc",
     tcsh => ".tcshrc",
     csh  => ".cshrc",
-    zsh  => ".zshenv"
+    zsh  => ".zshrc"
 };
 our $shellname_to_logininitfile = {
     bash => ".bash_profile",
@@ -411,11 +411,13 @@ if($ENV{'USER'} eq 'root' && !$flag_root) {
         print STDERR "INFO: you specified --force, so we run LPM in user mode.\n";
     }
 }
-if(-e $local_dir && !$flag_reset) {
-    print "The local directory '$local_dir' already exists.\n";
-    print "Please add -reset option if you intended to overwrite the existing local directory.\n";
-    exit 1;
-}
+# my $local_bin_dir="$local-dir/bin/lpm"
+# # if(-e $local_bin_dir && !$flag_reset) {
+# if(-e "$local_dir/bin/lpm" && !$flag_reset) {
+#     print "The local directory '$local_dir' already exists.\n";
+#     print "Please add -reset option if you intended to overwrite the existing local directory.\n";
+#     exit 1;
+# }
 
 print "checking whether C/C++ compiler exists in the system ... ";
 {
@@ -812,8 +814,8 @@ sub add_startup_scripts
     for my $shell ( @known_shells ) {
         my $interactive_init_file = $shellname_to_interactiveinitfile->{$shell};
         my $login_init_file       = $shellname_to_logininitfile->{$shell};
-        add_if_not_exist("$param_home/$interactive_init_file", "source $local_dir/$interactive_init_file");
-        add_if_not_exist("$param_home/$login_init_file"      , "source $local_dir/$login_init_file");
+        # add_if_not_exist("$param_home/$interactive_init_file", "source $local_dir/$interactive_init_file");
+        # add_if_not_exist("$param_home/$login_init_file"      , "source $local_dir/$login_init_file");
     }
 }
 
@@ -839,8 +841,8 @@ sub remove_startup_scripts
     for my $shell ( @known_shells ) {
         my $interactive_init_file = $shellname_to_interactiveinitfile->{$shell};
         my $login_init_file       = $shellname_to_logininitfile->{$shell};
-        remove_if_exist("$param_home/$interactive_init_file");
-        remove_if_exist("$param_home/$login_init_file"      );
+        # remove_if_exist("$param_home/$interactive_init_file");
+        # remove_if_exist("$param_home/$login_init_file"      );
     }
 }
 

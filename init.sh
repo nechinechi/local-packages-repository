@@ -12,3 +12,7 @@ fi
 # [ -d lpm ] || git clone git@github.com:takkyuuplayer/lpm.git
 # [ -e lpm ] || wget https://raw.githubusercontent.com/takkyuuplayer/lpm/master/lpm
 [ -x lpm ] || chmod u+x lpm
+
+# ./lpm initlocaldir --local=$HOME/local-packages-repository/
+./lpm initlocaldir --local=local-packages-repository/
+./through_path
