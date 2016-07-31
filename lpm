@@ -127,7 +127,7 @@ our $shellname_to_interactiveinitfile = {
     bash => ".bashrc",
     tcsh => ".tcshrc",
     csh  => ".cshrc",
-    zsh  => ".zshrc"
+    zsh  => ".zshenv"
 };
 our $shellname_to_logininitfile = {
     bash => ".bash_profile",
